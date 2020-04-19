@@ -13,7 +13,7 @@ module Ndl_string
         argument :str, required: true, desc: 'The input string to check'
 
         def call(str:, **)
-          str.valid_brackets?
+          puts str.valid_brackets?
         end
       end
 
@@ -23,7 +23,7 @@ module Ndl_string
         argument :str, required: true, desc: 'The input string to check'
 
         def call(str:, **)
-          str.palindrome?
+          puts str.palindrome?
         end
       end
 
