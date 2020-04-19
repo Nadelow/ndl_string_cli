@@ -1,5 +1,6 @@
-require "bundler/setup"
-require "dry/cli"
+require 'bundler/setup'
+require 'ndl_string'
+require 'dry/cli'
 
 module Ndl_string
   module CLI
@@ -12,19 +13,7 @@ module Ndl_string
         argument :str, required: true, desc: 'The input string to check'
 
         def call(str:, **)
-          counter = 0
-
-          str.each_char do |char|
-            if char == '('
-              counter += 1
-            elsif char == ')'
-              counter -= 1
-            end
-
-            return false if counter.negative?
-          end
-
-          counter.zero?
+          str.valid_brackets?
         end
       end
 
@@ -34,8 +23,7 @@ module Ndl_string
         argument :str, required: true, desc: 'The input string to check'
 
         def call(str:, **)
-          true_string = str.downcase.scan(/\w/)
-          true_string == true_string.reverse
+          str.palindrome?
         end
       end
 
