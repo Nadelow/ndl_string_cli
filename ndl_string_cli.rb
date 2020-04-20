@@ -1,13 +1,18 @@
+# frozen_string_literal: true
+
 require 'bundler/setup'
 require 'ndl_string'
 require 'dry/cli'
 
-module Ndl_string
+# NdlString module for CLI
+module NdlString
   module CLI
+    # CLI Commands
     module Commands
       extend Dry::CLI::Registry
 
-      class Valid_brackets < Dry::CLI::Command
+      # Valid_brackets CLI command
+      class ValidBrackets < Dry::CLI::Command
         desc 'Checking the correct sequence of brackets in a string!'
 
         argument :str, required: true, desc: 'The input string to check'
@@ -17,6 +22,7 @@ module Ndl_string
         end
       end
 
+      # Palindrome CLI command
       class Palindrome < Dry::CLI::Command
         desc 'Checking a string on a palindrome'
 
@@ -27,10 +33,10 @@ module Ndl_string
         end
       end
 
-      register 'valid_brackets', Valid_brackets
+      register 'valid_brackets', ValidBrackets
       register 'palindrome', Palindrome
     end
   end
 end
 
-Dry::CLI.new(Ndl_string::CLI::Commands).call
+Dry::CLI.new(NdlString::CLI::Commands).call
